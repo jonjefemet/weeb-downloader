@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Reset
+STYLE_RESET='\e[0m'
+
+# Styles
+STYLE_BOLD='\e[1m'
+STYLE_DIM='\e[2m'
+STYLE_UNDERLINED='\e[4m'
+STYLE_BLINK='\e[5m'
+STYLE_INVERTED='\e[7m'
+STYLE_HIDDEN='\e[8m'
+STYLE_STRIKETHROUGH='\e[9m'
+
+# Colors
+STYLE_BLACK='\e[30m'
+STYLE_RED='\e[31m'
+STYLE_GREEN='\e[32m'
+STYLE_YELLOW='\e[33m'
+STYLE_BLUE='\e[34m'
+STYLE_MAGENTA='\e[35m'
+STYLE_CYAN='\e[36m'
+STYLE_WHITE='\e[37m'
+
+# Backgrounds
+STYLE_BG_DEFAULT='\e[49m'
+STYLE_BG_BLACK='\e[40m'
+STYLE_BG_RED='\e[41m'
+STYLE_BG_GREEN='\e[42m'
+STYLE_BG_YELLOW='\e[43m'
+STYLE_BG_BLUE='\e[44m'
+STYLE_BG_MAGENTA='\e[45m'
+STYLE_BG_CYAN='\e[46m'
+STYLE_BG_WHITE='\e[47m'
