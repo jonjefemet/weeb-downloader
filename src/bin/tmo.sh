@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
-
-#!/usr/bin/env bash
+# shellcheck source=/dev/null
 
 source src/utils/read_ini.sh
 source src/conf/styles.sh
+source src/utils/menu.sh
+
 
 read_ini "$CFG_FILE"
 
-echo "Principal server: "${CONFIG["tmo_url"]}
+echo "Principal server: ${CONFIG["tmo_url"]}"
 
-read -p "Search title: " title
+read -rp "Search title: " title
 
-contenido=$(wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" ${CONFIG["tmo_url"]}"library?_pg=1&title=${title/ /+}")
+filter="${CONFIG["tmo_url"]}library?_pg=1&title=${title/ /+}"
 
-mapfile -t titles < <(echo $contenido | grep -oP "(?<=<h4 class=\"text-truncate\" title=\").*?(?=\">)")
+contenido=$(wget -qO- --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" "$filter" )
 
+mapfile -t titles < <(echo "$contenido" | grep -oP "(?<=<h4 class=\"text-truncate\" title=\").*?(?=\">)")
 
-echo $contenido
+for element in "${titles[@]}"; do
+    echo "$element"
+done
